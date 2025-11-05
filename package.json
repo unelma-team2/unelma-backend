@@ -20,10 +20,10 @@
     "@strapi/plugin-users-permissions": "5.23.4",
     "@strapi/strapi": "5.23.4",
     "@supabase/supabase-js": "^2.79.0",
-    "better-sqlite3": "11.3.0",
+    "dotenv": "^17.2.3",
     "fs-extra": "^10.0.0",
     "mime-types": "^2.1.27",
-    "pg": "^8.16.3",
+    "pg": "8.8.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
@@ -34,7 +34,7 @@
     "npm": ">=6.0.0"
   },
   "strapi": {
-    "uuid": "4d1fcf70-b786-49ba-a7a5-e39cfaee6977",
-    "installId": "ecf1365be70dcc7a7a9614141eaf1d590707b883c1557699a6f46c09f7dd7cc6"
+    "uuid": "8d170975-3825-431e-9806-c81b7672c888",
+    "installId": "71ddcd08830527c398fa3928565a9dd418d3357bfc7ac81cd38c34cb70691f0b"
   }
 }

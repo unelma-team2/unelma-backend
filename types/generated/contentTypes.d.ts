@@ -485,7 +485,7 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Blog_image: Schema.Attribute.Media<'images' | 'files'>;
+    blog_image: Schema.Attribute.Media<'images' | 'files'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

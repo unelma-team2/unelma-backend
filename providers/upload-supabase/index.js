@@ -1,7 +1,7 @@
-"use strict";
-
-const { createClient } = require("@supabase/supabase-js");
-const path = require("path");
+'use strict';
+const { createClient } = require('@supabase/supabase-js');
+const fs = require('fs');
+const path = require('path');
 
 module.exports = {
     init(config) {
@@ -9,37 +9,54 @@ module.exports = {
 
         return {
             async upload(file) {
-                try {
-                    const filePath = `${config.directory || ""}/${file.hash}${path.extname(file.name)}`;
-                    const { data, error } = await client.storage
-                        .from(config.bucket)
-                        .upload(filePath, Buffer.from(file.buffer, "binary"), {
-                            contentType: file.mime,
-                            upsert: true,
-                        });
+                const ext = path.extname(file.name);
+                const filePath = config.directory
+                    ? `${config.directory}/${file.hash}${ext}`
+                    : `${file.hash}${ext}`;
 
-                    if (error) throw error;
+                const buffer = file.buffer || fs.readFileSync(file.path);
 
-                    const { data: publicUrlData } = client.storage
-                        .from(config.bucket)
-                        .getPublicUrl(filePath);
+                const { error } = await client.storage.from(config.bucket).upload(filePath, buffer, {
+                    contentType: file.mime,
+                    upsert: true,
+                });
+                if (error) throw error;
 
-                    file.url = publicUrlData.publicUrl;
-                    return file;
-                } catch (err) {
-                    console.error("Supabase upload error:", err);
-                    throw err;
+                const { data } = client.storage.from(config.bucket).getPublicUrl(filePath);
+
+                // Set proper fields
+                file.url = data.publicUrl;
+                file.pathOnBucket = filePath;
+
+                // Strapi expects formats for images
+                if (file.mime.startsWith('image/')) {
+                    file.formats = {
+                        thumbnail: {
+                            url: data.publicUrl,
+                            width: 245,
+                            height: 156,
+                            hash: `thumbnail_${file.hash}`,
+                            ext,
+                            mime: file.mime,
+                            name: `thumbnail_${file.name}`,
+                            pathOnBucket: filePath,
+                        },
+                    };
                 }
+
+                return file;
             },
 
             async delete(file) {
-                try {
-                    const filePath = file.url.split("/").slice(-1)[0];
-                    const { error } = await client.storage.from(config.bucket).remove([filePath]);
+                const paths = [file.pathOnBucket];
+                if (file.formats) {
+                    Object.values(file.formats).forEach(fmt => {
+                        if (fmt.pathOnBucket) paths.push(fmt.pathOnBucket);
+                    });
+                }
+                if (paths.length) {
+                    const { error } = await client.storage.from(config.bucket).remove(paths);
                     if (error) throw error;
-                } catch (err) {
-                    console.error("Supabase delete error:", err);
-                    throw err;
                 }
             },
         };

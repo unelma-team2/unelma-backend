@@ -14,16 +14,16 @@
     "Title": {
       "type": "string"
     },
-    "Blog_image": {
+    "Description": {
+      "type": "text"
+    },
+    "blog_image": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
         "images",
         "files"
       ]
-    },
-    "Description": {
-      "type": "text"
     },
     "slug": {
       "type": "uid",
