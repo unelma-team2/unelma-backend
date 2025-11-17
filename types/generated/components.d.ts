@@ -6,11 +6,39 @@ export interface HomeHeroSection extends Struct.ComponentSchema {
     displayName: 'HeroSection';
   };
   attributes: {
-    hero_description: Schema.Attribute.Text;
+    hero_description1: Schema.Attribute.Text;
+    hero_description2: Schema.Attribute.Text;
     hero_image: Schema.Attribute.Media<'images' | 'files'>;
     hero_link: Schema.Attribute.String;
     hero_link_description: Schema.Attribute.String;
     hero_title: Schema.Attribute.String;
+  };
+}
+
+export interface HomeMetrics extends Struct.ComponentSchema {
+  collectionName: 'components_home_metrics';
+  info: {
+    displayName: 'Metrics';
+  };
+  attributes: {
+    label1: Schema.Attribute.String;
+    label2: Schema.Attribute.String;
+    number: Schema.Attribute.String;
+  };
+}
+
+export interface HomeProjectInquiry extends Struct.ComponentSchema {
+  collectionName: 'components_home_project_inquiries';
+  info: {
+    displayName: 'ProjectInquiry';
+  };
+  attributes: {
+    description1: Schema.Attribute.Text;
+    description2: Schema.Attribute.Text;
+    link: Schema.Attribute.String;
+    link_description: Schema.Attribute.String;
+    title1: Schema.Attribute.String;
+    title2: Schema.Attribute.String;
   };
 }
 
@@ -80,6 +108,8 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'home.hero-section': HomeHeroSection;
+      'home.metrics': HomeMetrics;
+      'home.project-inquiry': HomeProjectInquiry;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

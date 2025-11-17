@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_home_metrics",
+  "info": {
+    "displayName": "Metrics"
+  },
+  "options": {},
+  "attributes": {
+    "number": {
+      "type": "string"
+    },
+    "label1": {
+      "type": "string"
+    },
+    "label2": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

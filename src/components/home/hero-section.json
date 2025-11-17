@@ -8,7 +8,10 @@
     "hero_title": {
       "type": "string"
     },
-    "hero_description": {
+    "hero_description1": {
+      "type": "text"
+    },
+    "hero_description2": {
       "type": "text"
     },
     "hero_image": {

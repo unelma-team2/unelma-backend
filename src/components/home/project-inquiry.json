@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_home_project_inquiries",
+  "info": {
+    "displayName": "ProjectInquiry"
+  },
+  "options": {},
+  "attributes": {
+    "title1": {
+      "type": "string"
+    },
+    "title2": {
+      "type": "string"
+    },
+    "description1": {
+      "type": "text"
+    },
+    "description2": {
+      "type": "text"
+    },
+    "link": {
+      "type": "string"
+    },
+    "link_description": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

@@ -15,6 +15,16 @@
       "type": "component",
       "component": "home.hero-section",
       "repeatable": false
+    },
+    "ProjectInquiry": {
+      "type": "component",
+      "component": "home.project-inquiry",
+      "repeatable": false
+    },
+    "Metrics": {
+      "type": "component",
+      "component": "home.metrics",
+      "repeatable": true
     }
   }
 }
