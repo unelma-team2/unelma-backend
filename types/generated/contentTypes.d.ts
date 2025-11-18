@@ -594,6 +594,38 @@ export interface ApiContactInfoContactInfo extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiFeedbackFormFeedbackForm
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'feedback_forms';
+  info: {
+    displayName: 'Feedback_Form';
+    pluralName: 'feedback-forms';
+    singularName: 'feedback-form';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    avatar: Schema.Attribute.Media<'images' | 'files'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::feedback-form.feedback-form'
+    > &
+      Schema.Attribute.Private;
+    messagee: Schema.Attribute.Text;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'name'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
@@ -645,8 +677,12 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::home.home'> &
       Schema.Attribute.Private;
     Metrics: Schema.Attribute.Component<'home.metrics', true>;
+    OrderingProcess: Schema.Attribute.Component<'home.ordering-process', true>;
+    Products: Schema.Attribute.Component<'home.products', true>;
     ProjectInquiry: Schema.Attribute.Component<'home.project-inquiry', false>;
     publishedAt: Schema.Attribute.DateTime;
+    RecentWorks: Schema.Attribute.Component<'home.recent-works', true>;
+    Services: Schema.Attribute.Component<'home.services', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1169,6 +1205,7 @@ declare module '@strapi/strapi' {
       'api::category.category': ApiCategoryCategory;
       'api::contact-form.contact-form': ApiContactFormContactForm;
       'api::contact-info.contact-info': ApiContactInfoContactInfo;
+      'api::feedback-form.feedback-form': ApiFeedbackFormFeedbackForm;
       'api::global.global': ApiGlobalGlobal;
       'api::home.home': ApiHomeHome;
       'plugin::content-releases.release': PluginContentReleasesRelease;

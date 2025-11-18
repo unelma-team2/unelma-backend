@@ -25,6 +25,26 @@
       "type": "component",
       "component": "home.metrics",
       "repeatable": true
+    },
+    "Products": {
+      "type": "component",
+      "component": "home.products",
+      "repeatable": true
+    },
+    "Services": {
+      "type": "component",
+      "component": "home.services",
+      "repeatable": true
+    },
+    "OrderingProcess": {
+      "type": "component",
+      "component": "home.ordering-process",
+      "repeatable": true
+    },
+    "RecentWorks": {
+      "type": "component",
+      "component": "home.recent-works",
+      "repeatable": true
     }
   }
 }

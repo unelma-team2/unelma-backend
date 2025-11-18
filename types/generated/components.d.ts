@@ -27,6 +27,31 @@ export interface HomeMetrics extends Struct.ComponentSchema {
   };
 }
 
+export interface HomeOrderingProcess extends Struct.ComponentSchema {
+  collectionName: 'components_home_ordering_processes';
+  info: {
+    displayName: 'OrderingProcess';
+  };
+  attributes: {
+    number: Schema.Attribute.Integer;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface HomeProducts extends Struct.ComponentSchema {
+  collectionName: 'components_home_products';
+  info: {
+    displayName: 'Products';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    Image: Schema.Attribute.Media<'images' | 'files'>;
+    link: Schema.Attribute.String;
+    link_description: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface HomeProjectInquiry extends Struct.ComponentSchema {
   collectionName: 'components_home_project_inquiries';
   info: {
@@ -39,6 +64,39 @@ export interface HomeProjectInquiry extends Struct.ComponentSchema {
     link_description: Schema.Attribute.String;
     title1: Schema.Attribute.String;
     title2: Schema.Attribute.String;
+  };
+}
+
+export interface HomeRecentWorks extends Struct.ComponentSchema {
+  collectionName: 'components_home_recent_works';
+  info: {
+    displayName: 'RecentWorks';
+  };
+  attributes: {
+    category: Schema.Attribute.Enumeration<
+      [
+        'All',
+        'Web Development',
+        'Website Design',
+        'Mobile Development',
+        'Cyber Support',
+      ]
+    > &
+      Schema.Attribute.DefaultTo<'All'>;
+    image: Schema.Attribute.Media<'images' | 'files'>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface HomeServices extends Struct.ComponentSchema {
+  collectionName: 'components_home_services';
+  info: {
+    displayName: 'Services';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files'>;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -109,7 +167,11 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'home.hero-section': HomeHeroSection;
       'home.metrics': HomeMetrics;
+      'home.ordering-process': HomeOrderingProcess;
+      'home.products': HomeProducts;
       'home.project-inquiry': HomeProjectInquiry;
+      'home.recent-works': HomeRecentWorks;
+      'home.services': HomeServices;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

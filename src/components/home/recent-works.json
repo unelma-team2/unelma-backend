@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_home_recent_works",
+  "info": {
+    "displayName": "RecentWorks"
+  },
+  "options": {},
+  "attributes": {
+    "category": {
+      "type": "enumeration",
+      "default": "All",
+      "enum": [
+        "All",
+        "Web Development",
+        "Website Design",
+        "Mobile Development",
+        "Cyber Support"
+      ]
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "title": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

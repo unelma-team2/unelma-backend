@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_home_ordering_processes",
+  "info": {
+    "displayName": "OrderingProcess"
+  },
+  "options": {},
+  "attributes": {
+    "number": {
+      "type": "integer"
+    },
+    "title": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
