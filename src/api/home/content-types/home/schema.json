@@ -41,6 +41,11 @@
       "component": "home.ordering-process",
       "repeatable": true
     },
+    "Category": {
+      "type": "component",
+      "component": "home.category",
+      "repeatable": true
+    },
     "RecentWorks": {
       "type": "component",
       "component": "home.recent-works",

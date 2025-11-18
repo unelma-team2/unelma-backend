@@ -616,7 +616,7 @@ export interface ApiFeedbackFormFeedbackForm
       'api::feedback-form.feedback-form'
     > &
       Schema.Attribute.Private;
-    messagee: Schema.Attribute.Text;
+    message: Schema.Attribute.Text;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'name'>;
@@ -669,6 +669,7 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    Category: Schema.Attribute.Component<'home.category', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

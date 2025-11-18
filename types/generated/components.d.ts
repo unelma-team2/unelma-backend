@@ -1,5 +1,15 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface HomeCategory extends Struct.ComponentSchema {
+  collectionName: 'components_home_categories';
+  info: {
+    displayName: 'Category';
+  };
+  attributes: {
+    name: Schema.Attribute.String;
+  };
+}
+
 export interface HomeHeroSection extends Struct.ComponentSchema {
   collectionName: 'components_home_hero_sections';
   info: {
@@ -45,7 +55,7 @@ export interface HomeProducts extends Struct.ComponentSchema {
   };
   attributes: {
     description: Schema.Attribute.Text;
-    Image: Schema.Attribute.Media<'images' | 'files'>;
+    image: Schema.Attribute.Media<'images' | 'files'>;
     link: Schema.Attribute.String;
     link_description: Schema.Attribute.String;
     title: Schema.Attribute.String;
@@ -73,7 +83,9 @@ export interface HomeRecentWorks extends Struct.ComponentSchema {
     displayName: 'RecentWorks';
   };
   attributes: {
-    category: Schema.Attribute.Enumeration<
+    image: Schema.Attribute.Media<'images' | 'files'>;
+    title: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<
       [
         'All',
         'Web Development',
@@ -81,10 +93,7 @@ export interface HomeRecentWorks extends Struct.ComponentSchema {
         'Mobile Development',
         'Cyber Support',
       ]
-    > &
-      Schema.Attribute.DefaultTo<'All'>;
-    image: Schema.Attribute.Media<'images' | 'files'>;
-    title: Schema.Attribute.String;
+    >;
   };
 }
 
@@ -165,6 +174,7 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'home.category': HomeCategory;
       'home.hero-section': HomeHeroSection;
       'home.metrics': HomeMetrics;
       'home.ordering-process': HomeOrderingProcess;

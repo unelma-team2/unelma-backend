@@ -14,7 +14,7 @@
     "name": {
       "type": "string"
     },
-    "messagee": {
+    "message": {
       "type": "text"
     },
     "avatar": {

@@ -5,9 +5,8 @@
   },
   "options": {},
   "attributes": {
-    "category": {
+    "type": {
       "type": "enumeration",
-      "default": "All",
       "enum": [
         "All",
         "Web Development",
