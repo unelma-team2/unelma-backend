@@ -28,6 +28,24 @@
     "slug": {
       "type": "uid",
       "targetField": "Title"
+    },
+    "author_name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Digital Marketing",
+        "E-Commerce",
+        "API",
+        "Events & Conferences",
+        "Startup Business",
+        "Internships",
+        "Other"
+      ]
+    },
+    "date": {
+      "type": "date"
     }
   }
 }

@@ -485,10 +485,23 @@ export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    author_name: Schema.Attribute.String;
     blog_image: Schema.Attribute.Media<'images' | 'files'>;
+    category: Schema.Attribute.Enumeration<
+      [
+        'Digital Marketing',
+        'E-Commerce',
+        'API',
+        'Events & Conferences',
+        'Startup Business',
+        'Internships',
+        'Other',
+      ]
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
     Description: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'> &
