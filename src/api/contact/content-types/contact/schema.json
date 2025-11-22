@@ -1,0 +1,40 @@
+{
+  "kind": "singleType",
+  "collectionName": "contacts",
+  "info": {
+    "singularName": "contact",
+    "pluralName": "contacts",
+    "displayName": "Contact"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Banner": {
+      "type": "component",
+      "component": "contact.banner-section",
+      "repeatable": false
+    },
+    "ContactType": {
+      "type": "component",
+      "component": "contact.contact-type",
+      "repeatable": false
+    },
+    "ContactForm": {
+      "type": "component",
+      "component": "contact.contact-form",
+      "repeatable": true
+    },
+    "RequestQuote": {
+      "type": "component",
+      "component": "contact.request-quote",
+      "repeatable": false
+    },
+    "Feedback": {
+      "type": "component",
+      "component": "contact.feedback-form",
+      "repeatable": false
+    }
+  }
+}

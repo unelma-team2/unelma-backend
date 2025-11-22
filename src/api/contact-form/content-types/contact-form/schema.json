@@ -11,14 +11,25 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string"
     },
-    "Email": {
+    "email": {
       "type": "email"
     },
-    "Message": {
+    "message": {
       "type": "text"
+    },
+    "phone_number": {
+      "type": "integer"
+    },
+    "attachement": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     }
   }
 }

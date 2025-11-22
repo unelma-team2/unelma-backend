@@ -1,0 +1,53 @@
+{
+  "collectionName": "components_contact_feedback_forms",
+  "info": {
+    "displayName": "FeedbackForm"
+  },
+  "options": {},
+  "attributes": {
+    "feedback": {
+      "type": "enumeration",
+      "enum": [
+        "Products",
+        "Services",
+        "Other (specify below)"
+      ]
+    },
+    "feedback_services": {
+      "type": "enumeration",
+      "enum": [
+        "Cyber Security",
+        "AI & Machine Learning",
+        "Cloud Sevices",
+        "Data Management",
+        "Data Science",
+        "Web & Mobile Development",
+        "Startup Development"
+      ]
+    },
+    "feedback_products": {
+      "type": "enumeration",
+      "enum": [
+        "UnelmaMail",
+        "UnelmaCloud",
+        "UnelmaCRM",
+        "Open-Source Software"
+      ]
+    },
+    "rating": {
+      "type": "string"
+    },
+    "message": {
+      "type": "text"
+    },
+    "publish_rating": {
+      "type": "boolean",
+      "default": true
+    },
+    "contact_unelma": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "config": {}
+}

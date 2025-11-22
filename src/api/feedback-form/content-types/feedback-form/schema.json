@@ -28,6 +28,27 @@
     "slug": {
       "type": "uid",
       "targetField": "name"
+    },
+    "email": {
+      "type": "email"
+    },
+    "feedback_for": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "rating": {
+      "type": "json"
+    },
+    "publish_rating": {
+      "type": "boolean"
+    },
+    "contact_unelma": {
+      "type": "boolean"
+    },
+    "phone_number": {
+      "type": "integer"
     }
   }
 }

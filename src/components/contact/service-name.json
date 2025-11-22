@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_contact_service_names",
+  "info": {
+    "displayName": "ServiceName"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

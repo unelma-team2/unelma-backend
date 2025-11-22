@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_contact_request_quotes",
+  "info": {
+    "displayName": "RequestQuote"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "service_name": {
+      "type": "component",
+      "component": "contact.service-name",
+      "repeatable": true
+    },
+    "message": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

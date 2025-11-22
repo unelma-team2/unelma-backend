@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_contact_contact_types",
+  "info": {
+    "displayName": "ContactType"
+  },
+  "options": {},
+  "attributes": {
+    "contact_type": {
+      "type": "enumeration",
+      "enum": [
+        "Message / Question",
+        "Price quote request",
+        "Feedback / Review",
+        "Appointment Booking"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "phone_number": {
+      "type": "integer"
+    }
+  },
+  "config": {}
+}

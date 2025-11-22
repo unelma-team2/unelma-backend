@@ -1,5 +1,101 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ContactBannerSection extends Struct.ComponentSchema {
+  collectionName: 'components_contact_banner_sections';
+  info: {
+    displayName: 'BannerSection';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images' | 'files'>;
+    sub_title: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface ContactContactForm extends Struct.ComponentSchema {
+  collectionName: 'components_contact_contact_forms';
+  info: {
+    displayName: 'ContactForm';
+  };
+  attributes: {
+    attachement: Schema.Attribute.Media<'images' | 'files'>;
+    message: Schema.Attribute.Text;
+  };
+}
+
+export interface ContactContactType extends Struct.ComponentSchema {
+  collectionName: 'components_contact_contact_types';
+  info: {
+    displayName: 'ContactType';
+  };
+  attributes: {
+    contact_type: Schema.Attribute.Enumeration<
+      [
+        'Message / Question',
+        'Price quote request',
+        'Feedback / Review',
+        'Appointment Booking',
+      ]
+    >;
+    email: Schema.Attribute.Email;
+    name: Schema.Attribute.String;
+    phone_number: Schema.Attribute.Integer;
+  };
+}
+
+export interface ContactFeedbackForm extends Struct.ComponentSchema {
+  collectionName: 'components_contact_feedback_forms';
+  info: {
+    displayName: 'FeedbackForm';
+  };
+  attributes: {
+    contact_unelma: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    feedback: Schema.Attribute.Enumeration<
+      ['Products', 'Services', 'Other (specify below)']
+    >;
+    feedback_products: Schema.Attribute.Enumeration<
+      ['UnelmaMail', 'UnelmaCloud', 'UnelmaCRM', 'Open-Source Software']
+    >;
+    feedback_services: Schema.Attribute.Enumeration<
+      [
+        'Cyber Security',
+        'AI & Machine Learning',
+        'Cloud Sevices',
+        'Data Management',
+        'Data Science',
+        'Web & Mobile Development',
+        'Startup Development',
+      ]
+    >;
+    message: Schema.Attribute.Text;
+    publish_rating: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    rating: Schema.Attribute.String;
+  };
+}
+
+export interface ContactRequestQuote extends Struct.ComponentSchema {
+  collectionName: 'components_contact_request_quotes';
+  info: {
+    displayName: 'RequestQuote';
+  };
+  attributes: {
+    message: Schema.Attribute.Text;
+    service_name: Schema.Attribute.Component<'contact.service-name', true>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface ContactServiceName extends Struct.ComponentSchema {
+  collectionName: 'components_contact_service_names';
+  info: {
+    displayName: 'ServiceName';
+  };
+  attributes: {
+    name: Schema.Attribute.String;
+  };
+}
+
 export interface HomeCategory extends Struct.ComponentSchema {
   collectionName: 'components_home_categories';
   info: {
@@ -174,6 +270,12 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'contact.banner-section': ContactBannerSection;
+      'contact.contact-form': ContactContactForm;
+      'contact.contact-type': ContactContactType;
+      'contact.feedback-form': ContactFeedbackForm;
+      'contact.request-quote': ContactRequestQuote;
+      'contact.service-name': ContactServiceName;
       'home.category': HomeCategory;
       'home.hero-section': HomeHeroSection;
       'home.metrics': HomeMetrics;

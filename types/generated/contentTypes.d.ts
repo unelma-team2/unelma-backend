@@ -558,18 +558,20 @@ export interface ApiContactFormContactForm extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    attachement: Schema.Attribute.Media<'images' | 'files'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Email: Schema.Attribute.Email;
+    email: Schema.Attribute.Email;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::contact-form.contact-form'
     > &
       Schema.Attribute.Private;
-    Message: Schema.Attribute.Text;
-    Name: Schema.Attribute.String;
+    message: Schema.Attribute.Text;
+    name: Schema.Attribute.String;
+    phone_number: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -607,6 +609,38 @@ export interface ApiContactInfoContactInfo extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiContactContact extends Struct.SingleTypeSchema {
+  collectionName: 'contacts';
+  info: {
+    displayName: 'Contact';
+    pluralName: 'contacts';
+    singularName: 'contact';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Banner: Schema.Attribute.Component<'contact.banner-section', false>;
+    ContactForm: Schema.Attribute.Component<'contact.contact-form', true>;
+    ContactType: Schema.Attribute.Component<'contact.contact-type', false>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Feedback: Schema.Attribute.Component<'contact.feedback-form', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::contact.contact'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    RequestQuote: Schema.Attribute.Component<'contact.request-quote', false>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFeedbackFormFeedbackForm
   extends Struct.CollectionTypeSchema {
   collectionName: 'feedback_forms';
@@ -620,9 +654,12 @@ export interface ApiFeedbackFormFeedbackForm
   };
   attributes: {
     avatar: Schema.Attribute.Media<'images' | 'files'>;
+    contact_unelma: Schema.Attribute.Boolean;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    feedback_for: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -631,8 +668,12 @@ export interface ApiFeedbackFormFeedbackForm
       Schema.Attribute.Private;
     message: Schema.Attribute.Text;
     name: Schema.Attribute.String;
+    phone_number: Schema.Attribute.Integer;
+    publish_rating: Schema.Attribute.Boolean;
     publishedAt: Schema.Attribute.DateTime;
+    rating: Schema.Attribute.JSON;
     slug: Schema.Attribute.UID<'name'>;
+    type: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -697,6 +738,42 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     RecentWorks: Schema.Attribute.Component<'home.recent-works', true>;
     Services: Schema.Attribute.Component<'home.services', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiRequestQuoteFormRequestQuoteForm
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'request_quote_forms';
+  info: {
+    displayName: 'RequestQuote_Form';
+    pluralName: 'request-quote-forms';
+    singularName: 'request-quote-form';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    attachement: Schema.Attribute.Media<'images' | 'files'>;
+    avatar: Schema.Attribute.Media<'images' | 'files'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::request-quote-form.request-quote-form'
+    > &
+      Schema.Attribute.Private;
+    message: Schema.Attribute.Text;
+    name: Schema.Attribute.String;
+    phone_number: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    service_types: Schema.Attribute.JSON;
+    slug: Schema.Attribute.UID<'name'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1219,9 +1296,11 @@ declare module '@strapi/strapi' {
       'api::category.category': ApiCategoryCategory;
       'api::contact-form.contact-form': ApiContactFormContactForm;
       'api::contact-info.contact-info': ApiContactInfoContactInfo;
+      'api::contact.contact': ApiContactContact;
       'api::feedback-form.feedback-form': ApiFeedbackFormFeedbackForm;
       'api::global.global': ApiGlobalGlobal;
       'api::home.home': ApiHomeHome;
+      'api::request-quote-form.request-quote-form': ApiRequestQuoteFormRequestQuoteForm;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
